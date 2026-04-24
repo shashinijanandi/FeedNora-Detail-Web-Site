@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Poppins', sans-serif; overflow-x: hidden; }
+
+:root {
+  --green: #16a34a;
+  --green-dark: #14532d;
+  --green-light: #4ade80;
+  --green-pale: #dcfce7;
+}
+
+/* Timeline line */
+.timeline-container { position: relative; }
+.timeline-container::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0; bottom: 0;
+  width: 2px;
+  background: #dcfce7;
+  transform: translateX(-50%);
+}
+
+@media (max-width: 768px) {
+  .timeline-container::before { left: 16px; }
+}
+
+/* Scroll animations */
+.fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Section alternating bg */
+.section-alt { background: #f8f9fa; }
