@@ -3,10 +3,10 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  base: '/FeedNora-Detail-Web-Site/',
+  base: '/',
   server: {
     proxy: {
-      '/api': 'httSp://localhost:5000'
+      '/api': 'http://localhost:5000'
     }
   }
 })
