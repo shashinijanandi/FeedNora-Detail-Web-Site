@@ -5,7 +5,7 @@ const docs = [
   { icon: '📄', title: 'Project Proposal',          desc: 'Initial proposal with problem statement, objectives and methodology.',    link: '#', available: true },
   { icon: '📋', title: 'Checklist 1',               desc: 'Submission checklist for project proposal deliverables.',                 link: '#', available: true },
   { icon: '📊', title: 'Progress Presentation 1',   desc: 'Slides and documents from the first progress presentation.',              link: '#', available: true },
-  { icon: '🔬', title: 'Progress Presentation 2',   desc: 'Slides and documents from the second progress presentation.',             link: '#', available: false },
+  { icon: '🔬', title: 'Progress Presentation 2',   desc: 'Slides and documents from the second progress presentation.',             link: '#', available: true },
   { icon: '📰', title: 'Research Paper',             desc: 'Published academic paper on multilingual feedback classification.',        link: '#', available: false },
   { icon: '📘', title: 'Final Report & Presentation',desc: 'Complete final report with all chapters and presentation slides.',        link: '#', available: false },
 ]

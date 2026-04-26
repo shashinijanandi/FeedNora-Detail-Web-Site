@@ -1,0 +1,23 @@
+# Dependencies
+node_modules/
+
+# Production build output (for gh-pages we build fresh before deploy)
+dist/
+
+# Vite caches
+.vite/
+.cache/
+node_modules/.cache/
+
+# gh-pages temporary cache (this caused your original error)
+node_modules/.cache/gh-pages
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS generated files
+.DS_Store
+Thumbs.db
