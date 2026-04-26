@@ -1,0 +1,27 @@
+{
+  "name": "feednora-website",
+  "version": "1.0.0",
+  "description": "## Project Structure ``` feednora-website/ ├── frontend/          # React.js frontend │   ├── src/ │   │   ├── components/   # Navbar, Footer, shared components │   │   ├── pages/        # Home, Research, Solution, Milestones, Documents, About, Contact │   │   └── assets/       # Images, icons │   ├── index.html │   └── package.json ├── backend/           # Node.js/Express backend │   ├── routes/        # API routes │   ├── models/        # Data models │   └── server.js └── README.md ```",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shashinijanandi/FeedNora-Detail-Web-Site.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shashinijanandi/FeedNora-Detail-Web-Site/issues"
+  },
+  "homepage": "https://github.com/shashinijanandi/FeedNora-Detail-Web-Site#readme",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "express-validator": "^7.3.2",
+    "nodemailer": "^8.0.6"
+  }
+}
