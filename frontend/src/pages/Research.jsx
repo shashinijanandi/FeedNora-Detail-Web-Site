@@ -3,30 +3,39 @@ import { SectionTag, SectionTitle, Card } from '../components/UI'
 
 const cards = [
   {
-    icon: '🔍', title: 'Research Gap',
-    text: 'Most existing feedback classification systems target single languages — primarily English. There is a critical lack of integrated systems capable of simultaneously handling multilingual inputs, especially for low-resource South Asian languages like Sinhala and Tamil.'
+    icon: '🔍', 
+    title: 'Research Gap',
+    text: 'Current feedback systems have major limitations: they use fixed categories that cannot adapt to new topics, they work with only one language at a time and struggle with mixed languages (like Sinhala-English), and there is no single platform that combines language detection, sentiment analysis, and topic discovery together. Also, raw feedback text creates poor results in analysis, and small businesses cannot afford smart automated response tools for multiple languages.'
   },
   {
-    icon: '❓', title: 'Research Problem',
-    text: 'How can we design an AI-based system that accurately classifies multilingual user feedback into meaningful categories — positive, negative, neutral, and suggestion — while effectively handling code-switching and low-resource languages in real-world deployment?'
+    icon: '❓', 
+    title: 'Research Problem',
+    text: "Sri Lankan online platforms get customer feedback in English, Sinhala, Tamil, and mixed languages. Traditional tools cannot handle this effectively. The challenge: How can we build a system that automatically finds and organizes new topics from this multilingual feedback—without needing predefined categories or manual labeling—while also analyzing sentiment and generating personalized responses efficiently?"
   },
   {
-    icon: '🎯', title: 'Main Objective',
-    text: 'To develop a web-based multilingual feedback classification platform that leverages transformer-based NLP to automatically classify user feedback, extract topics dynamically, and provide real-time analytics — supporting English, Sinhala, and Tamil with high accuracy.'
+    icon: '🎯', 
+    title: 'Main Objective',
+    text: "Build FEEDNORA — a smart multilingual feedback system that automatically discovers topics, analyzes sentiment, and generates personalized responses in multiple languages without needing predefined categories or labeled training data."
   },
   {
-    icon: '📋', title: 'Specific Objectives',
+    icon: '📋', 
+    title: 'Specific Objectives',
     list: [
-      'Develop a fine-tuned mBERT model for multilingual feedback classification',
-      'Implement BERTopic-based dynamic topic modeling',
-      'Build a real-time analytics dashboard with visual insights',
-      'Evaluate across multiple languages achieving ≥90% accuracy',
-      'Integrate multilingual support for Sinhala, Tamil and English',
+      'Build a smart topic discovery system using UMAP and HDBSCAN clustering on multilingual text',
+      'Support English, Sinhala, Tamil, and code-mixed text using advanced language models',
+      'Develop a learning system that can classify new feedback in real-time without retraining',
+      'Design a response generator that creates personalized replies based on sentiment and category',
     ]
   },
 ]
 
-const techs = ['Python','FastAPI','React.js','PostgreSQL','mBERT','BERTopic','Sentence Transformers','Hugging Face','Docker','Tailwind CSS','NLTK','Scikit-learn']
+const techs = [
+  'Python 3.10', 'FastAPI', 'React 18', 'PostgreSQL 15',
+  'Sentence Transformers', 'UMAP-learn', 'HDBSCAN',
+  'spaCy', 'scikit-learn', 'langdetect',
+  'pandas', 'numpy', 'Docker', 'Tailwind CSS',
+  'Google Colab (T4 GPU)', 'OpenAI API (GPT-4o-mini)'
+]
 
 export default function Research() {
   return (
@@ -36,20 +45,19 @@ export default function Research() {
         <SectionTitle>Project Scope</SectionTitle>
 
         {/* Literature Survey */}
-        <h3 className="text-2xl font-bold mt-10 mb-4" style={{ color: '#14532d' }}>Literature Survey</h3>
+        <h3 className="text-2xl font-bold mt-10 mb-4" style={{ color: '#14532d' }}>
+          Literature Survey
+        </h3>
         <p className="leading-relaxed mb-4" style={{ color: '#64748b', fontSize: '0.93rem', maxWidth: 860 }}>
-          Recent research in Natural Language Processing has produced numerous approaches for sentiment analysis and text classification.
-          Most existing systems are designed for single-language datasets, primarily English. Multilingual BERT (mBERT) [1] demonstrated
-          the feasibility of cross-lingual transfer learning. BERTopic [2] enabled neural topic modeling with dynamic theme extraction.
-          Despite these advances, most production-ready feedback systems lack the ability to simultaneously classify sentiment, extract
-          topics, and handle code-switching across South Asian languages including Sinhala and Tamil. FEEDNORA bridges these gaps by
-          providing a comprehensive multilingual classification and topic modeling platform.
+          Topic modeling has evolved significantly over 20 years. Early methods like LDA and NMF required you to specify how many topics you wanted and couldn't handle multiple languages or changing data. Modern transformer models like BERT revolutionized the field by understanding 100+ languages. Sentence-BERT improved this further by creating efficient sentence representations; its multilingual version allows English, Sinhala, and Tamil feedback to be analyzed together. BERTopic showed that combining sentence transformers with UMAP (dimensionality reduction) and HDBSCAN (clustering) produces better topic quality than older methods. For generating responses, template-based systems have proven practical and effective (70-85% accuracy), while deep learning approaches like GPT-2 are too expensive for small businesses and lack sufficient Sinhala and Tamil training data.
         </p>
         <div className="p-5 rounded-xl mb-10" style={{ background: '#f0fdf4', borderLeft: '4px solid #16a34a' }}>
           <p className="text-xs leading-loose" style={{ color: '#64748b' }}>
-            [1] J. Devlin et al., "BERT: Pre-training of Deep Bidirectional Transformers," NAACL, 2019.<br />
-            [2] M. Grootendorst, "BERTopic: Neural topic modeling with a class-based TF-IDF procedure," arXiv, 2022.<br />
-            [3] D. Blei, A. Ng, M. Jordan, "Latent Dirichlet Allocation," JMLR, vol. 3, pp. 993–1022, 2003.
+            [1] D. Blei, A. Ng, M. Jordan, "Latent Dirichlet Allocation," JMLR, vol. 3, pp. 993–1022, 2003. &nbsp;
+            [2] J. Devlin et al., "BERT: Pre-training of Deep Bidirectional Transformers," NAACL, 2019. &nbsp;
+            [3] N. Reimers &amp; I. Gurevych, "Sentence-BERT," EMNLP, 2019. &nbsp;
+            [4] M. Grootendorst, "BERTopic," arXiv, 2022. &nbsp;
+            [5] E. Reiter &amp; R. Dale, "Building Natural Language Generation Systems," Cambridge University Press, 2000.
           </p>
         </div>
 
@@ -77,12 +85,14 @@ export default function Research() {
 
         {/* Methodology + Tech */}
         <Card className="mt-6">
-          <div className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-4" style={{ background: '#dcfce7' }}>⚙️</div>
-          <h3 className="text-lg font-bold mb-3" style={{ color: '#14532d' }}>Methodology &amp; Technologies Used</h3>
+          <div className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-4" 
+            style={{ background: '#dcfce7' }}>⚙️</div>
+          <h3 className="text-lg font-bold mb-3" style={{ color: '#14532d' }}>
+            Methodology &amp; Technologies Used
+          </h3>
           <p className="text-sm leading-relaxed mb-4" style={{ color: '#64748b' }}>
             The system uses a microservices architecture. A fine-tuned multilingual BERT model is served via FastAPI.
             BERTopic handles dynamic topic modeling. PostgreSQL stores feedback data.
-            A React.js dashboard provides real-time analytics and visualization.
           </p>
           <div className="flex flex-wrap gap-2">
             {techs.map(t => (

@@ -2,13 +2,6 @@ import React, { useState } from 'react'
 import { SectionTag, SectionTitle } from '../components/UI'
 import axios from 'axios'
 
-const infoCards = [
-  { icon: 'fa-university', title: 'Institution', text: 'Sri Lanka Institute of Information Technology (SLIIT), Malabe, Sri Lanka' },
-  { icon: 'fa-brands fa-github', title: 'GitHub', text: 'github.com/shashinijanandi/FEEDNORA' },
-  { icon: 'fa-globe', title: 'Website', text: 'cdap.sliit.lk — FEEDNORA' },
-  { icon: 'fa-envelope', title: 'Email', text: 'feednora@gmail.com' },
-]
-
 export default function Contact() {
   const [form, setForm]     = useState({ name: '', email: '', message: '' })
   const [status, setStatus] = useState('idle')
@@ -52,7 +45,7 @@ export default function Contact() {
         <SectionTag>Contact Us</SectionTag>
         <SectionTitle>Get In Touch</SectionTitle>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mt-8">
+        <div className="grid grid-cols-1 gap-10 mt-8">
 
           {/* Form card */}
           <div className="bg-white rounded-2xl border p-8" style={{ borderColor: '#e2e8f0' }}>
@@ -96,37 +89,6 @@ export default function Contact() {
                 {status === 'loading' ? 'Sending...' : 'Submit'}
               </button>
             </form>
-          </div>
-
-          {/* Info side */}
-          <div className="flex flex-col gap-4">
-            <div className="p-6 rounded-2xl" style={{ background: '#dcfce7' }}>
-              <h4 className="font-bold mb-2" style={{ color: '#14532d' }}>Contact Details</h4>
-              <p className="text-sm leading-relaxed" style={{ color: '#64748b' }}>
-                For further queries please reach us at<br />
-                <a href="mailto:feednora@gmail.com" className="font-bold" style={{ color: '#16a34a' }}>
-                  feednora@gmail.com
-                </a>
-              </p>
-              <p className="text-sm mt-3 leading-relaxed" style={{ color: '#64748b' }}>
-                Hope this project helped you in some manner. Thank you!<br />
-                <strong style={{ color: '#14532d' }}>— Team FEEDNORA</strong>
-              </p>
-            </div>
-
-            {infoCards.map(c => (
-              <div key={c.title} className="bg-white rounded-xl border flex items-start gap-4 p-5"
-                style={{ borderColor: '#e2e8f0' }}>
-                <div className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0 text-base"
-                  style={{ background: '#dcfce7', color: '#14532d' }}>
-                  <i className={`fas ${c.icon}`}></i>
-                </div>
-                <div>
-                  <div className="text-sm font-bold mb-0.5" style={{ color: '#14532d' }}>{c.title}</div>
-                  <div className="text-xs" style={{ color: '#64748b' }}>{c.text}</div>
-                </div>
-              </div>
-            ))}
           </div>
         </div>
       </div>

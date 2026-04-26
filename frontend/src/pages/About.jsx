@@ -2,13 +2,13 @@ import React from 'react'
 import { SectionTag, SectionTitle } from '../components/UI'
 
 const supervisors = [
-  { initials: 'SV', badge: 'Supervisor',    name: 'Prof. / Dr. Supervisor Name', inst: 'Sri Lanka Institute of Information Technology (SLIIT)\nDepartment of Information Technology' },
-  { initials: 'CS', badge: 'Co-Supervisor', name: 'Co-Supervisor Name',          inst: 'Sri Lanka Institute of Information Technology (SLIIT)\nDepartment of Information Technology' },
+  { initials: 'SV', badge: 'Supervisor',    name: 'Mr.Kanishka Yapa', inst: 'Sri Lanka Institute of Information Technology (SLIIT)\nDepartment of Information Technology' },
+  { initials: 'CS', badge: 'Co-Supervisor', name: 'Ms.Anjalie Gamage',          inst: 'Sri Lanka Institute of Information Technology (SLIIT)\nDepartment of Information Technology' },
 ]
 
 const members = [
-  { initials: 'SJ', badge: 'Team Leader', name: 'Shashini Janandi',   inst: 'Sri Lanka Institute of Information Technology (SLIIT)\nDepartment of Information Technology' },
-  { initials: 'M2', badge: 'Team Member', name: 'Member 2 Full Name', inst: 'Sri Lanka Institute of Information Technology (SLIIT)\nDepartment of Information Technology' },
+  { initials: 'SJ', badge: 'Team Member', name: 'Vidanagamachchi S.J',   inst: 'Sri Lanka Institute of Information Technology (SLIIT)\nDepartment of Information Technology' },
+  { initials: 'M2', badge: 'Team Member', name: 'Aponsu G.D.N', inst: 'Sri Lanka Institute of Information Technology (SLIIT)\nDepartment of Information Technology' },
 ]
 
 function PersonCard({ initials, badge, name, inst }) {

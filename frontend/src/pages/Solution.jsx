@@ -2,18 +2,14 @@ import React from 'react'
 import { SectionTag, SectionTitle, Card } from '../components/UI'
 
 const features = [
-  { icon: '🌐', title: 'Multilingual Classification', desc: 'Fine-tuned mBERT classifies feedback in English, Sinhala, Tamil and 9+ languages with 94% accuracy.' },
-  { icon: '🧩', title: 'Dynamic Topic Modeling',     desc: 'BERTopic extracts and tracks evolving themes from feedback corpora in real time without manual labeling.' },
-  { icon: '📊', title: 'Real-time Analytics',        desc: 'Interactive dashboard visualizes sentiment trends, topic clusters, and feedback volume over time.' },
-  { icon: '🔒', title: 'Secure API',                 desc: 'JWT-authenticated FastAPI backend with role-based access control for businesses and admins.' },
 ]
 
 const techLogos = [
-  { src: 'https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg',      name: 'Python' },
-  { src: 'https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg',              name: 'React' },
+  { src: 'https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg',      name: 'Python 3.10' },
+  { src: 'https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg',              name: 'React 18' },
   { src: 'https://upload.wikimedia.org/wikipedia/commons/0/05/Scikit_learn_logo_small.svg', name: 'Scikit-learn' },
   { src: 'https://fastapi.tiangolo.com/img/logo-margin/logo-teal.png',                      name: 'FastAPI' },
-  { src: 'https://upload.wikimedia.org/wikipedia/commons/2/29/Postgresql_elephant.svg',     name: 'PostgreSQL' },
+  { src: 'https://upload.wikimedia.org/wikipedia/commons/2/29/Postgresql_elephant.svg',     name: 'PostgreSQL 15' },
   { src: 'https://upload.wikimedia.org/wikipedia/commons/4/4e/Docker_%28container_engine%29_logo.svg', name: 'Docker' },
 ]
 
@@ -25,11 +21,7 @@ export default function Solution() {
         <SectionTitle>FEEDNORA Platform</SectionTitle>
 
         <p className="leading-relaxed mb-8 max-w-3xl" style={{ color: '#64748b', fontSize: '0.95rem' }}>
-          FEEDNORA provides a comprehensive web-based platform for intelligent multilingual feedback classification.
-          The system processes user feedback in multiple languages and classifies it into Positive, Negative, Neutral,
-          and Suggestion categories. A fine-tuned multilingual BERT model achieves 94% accuracy. Dynamic topic modeling
-          powered by BERTopic extracts recurring themes. A real-time analytics dashboard enables businesses to monitor
-          feedback trends, sentiment shifts, and topic clusters.
+          FEEDNORA is a comprehensive AI-driven multilingual feedback classification and automated response platform designed specifically for Sri Lankan e-commerce and digital service operators. The platform solves a critical problem: organizations receive vast volumes of user feedback in English, Sinhala, Tamil, and code-mixed combinations, but lack practical tools to analyze or respond to them at scale. FEEDNORA addresses this through two integrated AI subsystems. The first is a  dynamic topic modeling  that leverages multilingual sentence transformers, UMAP dimensionality reduction, and HDBSCAN density-based clustering to automatically discover and classify evolving topics from multilingual feedback — including code-mixed and transliterated text — without predefined categories or manual annotation. A novel two-stage keyphrase summarization mechanism extracts clean semantic keyphrases before embedding to dramatically improve clustering quality. A centroid-based incremental learning mechanism enables real-time classification of new feedback and detection of genuinely emerging topics without full model retraining. The second subsystem is a personalized feedback response generation module that classifies incoming feedback by sentiment and category, selects from 60 structured response templates, and injects personalization variables to produce contextually appropriate, sentiment-aware automated responses. All components are integrated within a React 18 frontend, FastAPI backend, and PostgreSQL database, containerized with Docker for production deployment.
         </p>
 
         {/* System Diagram */}
@@ -37,8 +29,10 @@ export default function Solution() {
           <p className="text-xs mb-4 italic" style={{ color: '#94a3b8' }}>Figure 1: High-Level System Overview</p>
           <div className="rounded-xl p-6 font-semibold text-sm leading-loose"
             style={{ background: 'linear-gradient(135deg,#f0fdf4,#dcfce7)', color: '#14532d' }}>
-            📝 User Feedback &nbsp;→&nbsp; 🌐 Language Detection &nbsp;→&nbsp; 🧠 mBERT Classifier<br />
-            → &nbsp;🧩 Topic Modeling &nbsp;→&nbsp; 📊 Analytics Dashboard
+            📝 User Feedback &nbsp;→&nbsp; 🔤 Text Cleaning &amp; Keyphrase Extraction &nbsp;→&nbsp; 🌐 Language Detection<br />
+            → &nbsp;🧠 Multilingual Embedding (MiniLM-L12-v2) &nbsp;→&nbsp; 📉 UMAP Dimensionality Reduction<br />
+            → &nbsp;🔵 HDBSCAN Clustering &nbsp;→&nbsp; 🏷️ Topic Naming &amp; Centroid Storage<br />
+            → &nbsp;💬 Sentiment Classification &nbsp;→&nbsp; ✉️ Personalized Response Generation &nbsp;→&nbsp; 📊 Analytics Dashboard
           </div>
         </div>
 

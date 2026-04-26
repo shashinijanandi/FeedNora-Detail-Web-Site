@@ -45,10 +45,10 @@ export default function Home() {
       <div className="max-w-6xl mx-auto px-6 py-20 text-center relative z-10 w-full">
 
         {/* Badge */}
-        <div className="inline-block text-xs font-bold uppercase tracking-widest px-5 py-2 rounded-full mb-6"
+        {/* <div className="inline-block text-xs font-bold uppercase tracking-widest px-5 py-2 rounded-full mb-6"
           style={{ background: '#dcfce7', color: '#14532d', border: '1px solid rgba(22,163,74,0.2)' }}>
           SLIIT Final Year Research Project 2025/2026
-        </div>
+        </div> */}
 
         <p className="text-base mb-2" style={{ color: '#64748b' }}>Hi, Welcome to</p>
 

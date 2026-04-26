@@ -4,12 +4,12 @@ import { SectionTag, SectionTitle, Chip } from '../components/UI'
 const milestones = [
   { date: 'March 2026',    title: 'Project Proposal',           desc: 'Initial proposal covering research problem, objectives, methodology, and literature review submitted to the panel.', progress: 100, marks: 6,  chip: 'done', chipLabel: '✓ Completed' },
   { date: 'April 2026',   title: 'Progress Presentation – 1',  desc: 'First presentation demonstrating system design, architecture, and early prototype with preliminary model results.',    progress: 100, marks: 15, chip: 'done', chipLabel: '✓ Completed' },
-  { date: 'July 2026',    title: 'Progress Presentation – 2',  desc: 'Showcasing completed core features, multilingual model evaluation, topic modeling results and full integration.',        progress: 60,  marks: 18, chip: 'soon', chipLabel: '⏳ In Progress' },
+  { date: 'July 2026',    title: 'Progress Presentation – 2',  desc: 'Showcasing completed core features, multilingual model evaluation, topic modeling results and full integration.',        progress: 100, marks: 18, chip: 'done', chipLabel: '✓ Completed' },
   { date: 'August 2026',  title: 'Research Paper',             desc: 'Academic paper describing contributions to multilingual NLP and feedback classification knowledge.',                     progress: 20,  marks: 10, chip: 'pend', chipLabel: '🔵 Upcoming' },
-  { date: 'October 2026', title: 'Final Report',               desc: 'Complete final report with all chapters including design, implementation, evaluation and conclusions.',                   progress: 10,  marks: 19, chip: 'pend', chipLabel: '🔵 Upcoming' },
+  { date: 'October 2026', title: 'Final Report',               desc: 'Complete final report with all chapters including design, implementation, evaluation and conclusions.',                   progress: 60,  marks: 19, chip: 'pend', chipLabel: '🔵 Upcoming' },
   { date: 'Nov 2026',     title: 'Final Presentation & Viva',  desc: 'Complete system demonstration before the panel. Individual viva assessing each member\'s contribution.',                progress: 0,   marks: 20, chip: 'pend', chipLabel: '🔵 Upcoming' },
-  { date: 'Nov 2026',     title: 'Website Assessment',         desc: 'The project website promotes the research and provides all details related to FEEDNORA for public access.',             progress: 50,  marks: 2,  chip: 'soon', chipLabel: '⏳ In Progress' },
-  { date: 'Dec 2026',     title: 'Logbook',                    desc: 'Project status validated through the logbook including status documents 1 and 2 throughout the project.',               progress: 0,   marks: 4,  chip: 'pend', chipLabel: '🔵 Upcoming' },
+  { date: 'Nov 2026',     title: 'Website Assessment',         desc: 'The project website promotes the research and provides all details related to FEEDNORA for public access.',             progress: 100,  marks: 2,  chip: 'done', chipLabel: '✓ Completed' },
+  { date: 'Dec 2026',     title: 'Logbook',                    desc: 'Project status validated through the logbook including status documents 1 and 2 throughout the project.',               progress: 40,   marks: 4,  chip: 'pend', chipLabel: '⏳ In Progress' },
 ]
 
 const topStats = [

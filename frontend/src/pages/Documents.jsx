@@ -2,12 +2,12 @@ import React from 'react'
 import { SectionTag, SectionTitle } from '../components/UI'
 
 const docs = [
-  { icon: '📄', title: 'Project Proposal',          desc: 'Initial proposal with problem statement, objectives and methodology.',    link: '#', available: true },
-  { icon: '📋', title: 'Checklist 1',               desc: 'Submission checklist for project proposal deliverables.',                 link: '#', available: true },
-  { icon: '📊', title: 'Progress Presentation 1',   desc: 'Slides and documents from the first progress presentation.',              link: '#', available: true },
-  { icon: '🔬', title: 'Progress Presentation 2',   desc: 'Slides and documents from the second progress presentation.',             link: '#', available: true },
+  { icon: '📄', title: 'Project Proposal',          desc: 'Initial proposal with problem statement, objectives and methodology.',    link: 'https://drive.google.com/drive/folders/1IkfzBC9XyIHHN-jAmS50dGU6ZnuXCj6c?usp=sharing', available: true },
+  { icon: '📋', title: 'Checklist 1',               desc: 'Submission checklist for project proposal deliverables.',                 link: 'https://drive.google.com/drive/folders/1mF5Po4XSYAb3Bt9QPCWN6viid2r2djlL?usp=sharing', available: true },
+  { icon: '📊', title: 'Progress Presentation 1',   desc: 'Slides and documents from the first progress presentation.',              link: 'https://drive.google.com/drive/folders/1nkK_lxFrwREg5a_oY0fc4YaqyRp3G3Yi?usp=sharing', available: true },
+  { icon: '🔬', title: 'Progress Presentation 2',   desc: 'Slides and documents from the second progress presentation.',             link: 'https://drive.google.com/drive/folders/1HmKyaK80WFHlsF_u0VLDFlUMTNL70hLY?usp=sharing', available: true },
+  { icon: '📘', title: 'Final Report & Presentation',desc: 'Complete final report with all chapters and presentation slides.',        link: 'https://drive.google.com/drive/folders/1Oh8oNPEz1g4m8U2ZADznqIP-ohnH1_vV?usp=sharing', available: true },
   { icon: '📰', title: 'Research Paper',             desc: 'Published academic paper on multilingual feedback classification.',        link: '#', available: false },
-  { icon: '📘', title: 'Final Report & Presentation',desc: 'Complete final report with all chapters and presentation slides.',        link: '#', available: false },
 ]
 
 export default function Documents() {
@@ -27,7 +27,7 @@ export default function Documents() {
               <h4 className="font-bold text-sm mb-2" style={{ color: '#14532d' }}>{d.title}</h4>
               <p className="text-xs leading-relaxed mb-5 flex-1" style={{ color: '#64748b' }}>{d.desc}</p>
               {d.available ? (
-                <a href={d.link}
+                <a href={d.link} target="_blank" rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-5 py-2 rounded-lg text-xs font-bold text-white transition-all hover:opacity-90"
                   style={{ background: '#16a34a' }}>
                   <i className="fas fa-eye"></i> View Document
