@@ -1,0 +1,25 @@
+{
+  "version": 2,
+  "experimentalServices": {
+    "frontend": {
+      "entrypoint": "frontend",
+      "buildCommand": "npm install && npm run build",
+      "outputDirectory": "dist",
+      "framework": "vite"
+    },
+    "backend": {
+      "entrypoint": "backend",
+      "buildCommand": "npm install",
+      "framework": "express",
+      "env": {
+        "PORT": "5000"
+      }
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "http://backend:5000/api/:path*"
+    }
+  ]
+}

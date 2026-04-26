@@ -9,7 +9,13 @@ const app  = express()
 const PORT = process.env.PORT || 5000
 
 // ── Middleware ──────────────────────────────────────
-app.use(cors({ origin: 'http://localhost:5173' }))
+app.use(cors({ 
+     origin: [
+       'http://localhost:5173',
+       'https://your-project.vercel.app',  // Add your Vercel URL
+       /\.vercel\.app$/  // Allow all Vercel preview URLs
+     ]
+   }))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
