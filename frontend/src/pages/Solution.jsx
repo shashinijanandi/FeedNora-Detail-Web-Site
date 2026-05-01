@@ -34,6 +34,12 @@ export default function Solution() {
             → &nbsp;🔵 HDBSCAN Clustering &nbsp;→&nbsp; 🏷️ Topic Naming &amp; Centroid Storage<br />
             → &nbsp;💬 Sentiment Classification &nbsp;→&nbsp; ✉️ Personalized Response Generation &nbsp;→&nbsp; 📊 Analytics Dashboard
           </div>
+          <img
+            src="/figure1-analytics.png"
+            alt="AI-Powered Multilingual User Feedback Analytics diagram"
+            className="mx-auto mt-6 rounded-2xl shadow-lg max-w-full h-auto"
+            style={{ border: '1px solid #e2e8f0' }}
+          />
         </div>
 
         {/* Feature cards */}
