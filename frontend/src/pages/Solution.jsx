@@ -26,7 +26,6 @@ export default function Solution() {
 
         {/* System Diagram */}
         <div className="text-center p-8 bg-white rounded-2xl border mb-8" style={{ borderColor: '#e2e8f0' }}>
-          <p className="text-xs mb-4 italic" style={{ color: '#94a3b8' }}>Figure 1: High-Level System Overview</p>
          {/* <div className="rounded-xl p-6 font-semibold text-sm leading-loose"
             style={{ background: 'linear-gradient(135deg,#f0fdf4,#dcfce7)', color: '#14532d' }}>
             📝 User Feedback &nbsp;→&nbsp; 🔤 Text Cleaning &amp; Keyphrase Extraction &nbsp;→&nbsp; 🌐 Language Detection<br />
@@ -40,6 +39,8 @@ export default function Solution() {
             className="mx-auto mt-6 rounded-2xl shadow-lg max-w-full h-auto"
             style={{ border: '1px solid #e2e8f0' }}
           />
+          <p className="text-xs mb-4 italic" style={{ color: '#94a3b8' }}>Figure 1: High-Level System Overview</p>
+
         </div>
 
         {/* Feature cards */}
