@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { SectionTag, SectionTitle } from '../components/UI'
 
-// ✅ API endpoint for contact messages
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000'
+// ✅ PASTE YOUR FORMSPREE URL HERE (from formspree.io dashboard)
+const FORMSPREE_URL = 'https://formspree.io/f/xbdwopda'
 
 export default function Contact() {
   const [form, setForm]     = useState({ name: '', email: '', message: '' })
@@ -21,17 +21,17 @@ export default function Contact() {
     setStatus('loading')
     setErrMsg('')
     try {
-      const res = await fetch(`${API_URL}/api/contact`, {
+      const res = await fetch(FORMSPREE_URL, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify(form),
       })
-      const data = await res.json()
       if (res.ok) {
         setStatus('success')
         setForm({ name: '', email: '', message: '' })
       } else {
-        setErrMsg(data?.errors?.[0]?.msg || data?.error || 'Something went wrong. Please try again.')
+        const data = await res.json()
+        setErrMsg(data?.errors?.[0]?.message || 'Something went wrong. Please try again.')
         setStatus('error')
       }
     } catch {
