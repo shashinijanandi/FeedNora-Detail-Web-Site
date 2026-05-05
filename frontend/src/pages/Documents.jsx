@@ -7,7 +7,7 @@ const docs = [
   { icon: '📊', title: 'Progress Presentation 1',   desc: 'Slides and documents from the first progress presentation.',              link: 'https://drive.google.com/drive/folders/1nkK_lxFrwREg5a_oY0fc4YaqyRp3G3Yi?usp=sharing', available: true },
   { icon: '🔬', title: 'Progress Presentation 2',   desc: 'Slides and documents from the second progress presentation.',             link: 'https://drive.google.com/drive/folders/1HmKyaK80WFHlsF_u0VLDFlUMTNL70hLY?usp=sharing', available: true },
   { icon: '📘', title: 'Final Report & Presentation',desc: 'Complete final report with all chapters and presentation slides.',        link: 'https://drive.google.com/drive/folders/1Oh8oNPEz1g4m8U2ZADznqIP-ohnH1_vV?usp=sharing', available: true },
-  { icon: '📰', title: 'Research Paper',             desc: 'Published academic paper on multilingual feedback classification.',        link: '#', available: false },
+  { icon: '📰', title: 'Research Paper',             desc: 'Published academic paper on multilingual feedback classification.',        link: 'https://drive.google.com/drive/folders/1wruBLbjPFxNxJQTFKICLUOTTSQ9DyuNx?usp=sharing', available: true },
 ]
 
 export default function Documents() {
