@@ -25,12 +25,46 @@ function saveMessage(msg) {
 // ── Nodemailer transporter ────────────────────────────────────
 function createTransporter() {
   return nodemailer.createTransport({
-    service: 'gmail',
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true,
     auth: {
       user: process.env.EMAIL_USER,
       pass: process.env.EMAIL_PASS,
     },
   })
+}
+
+function getMailOptions({ name, email, message }) {
+  return {
+    from: `"FEEDNORA Contact" <${process.env.EMAIL_USER}>`,
+    to: process.env.EMAIL_TO || 'shashini.janandi@gmail.com',
+    replyTo: email,
+    subject: `New message from ${name} — FEEDNORA Website`,
+    html: `
+      <div style="font-family:Poppins,sans-serif;max-width:600px;margin:0 auto;">
+        <div style="background:#14532d;padding:24px;border-radius:12px 12px 0 0;text-align:center;">
+          <h1 style="color:white;margin:0;font-size:22px;">FEED<span style="color:#4ade80;">NORA</span></h1>
+          <p style="color:rgba(255,255,255,0.7);margin:4px 0 0;font-size:13px;">New Contact Message</p>
+        </div>
+        <div style="background:#f8f9fa;padding:28px;border-radius:0 0 12px 12px;border:1px solid #e2e8f0;">
+          <table style="width:100%;border-collapse:collapse;">
+            <tr><td style="padding:8px 0;font-size:13px;color:#64748b;font-weight:600;width:80px;">Name</td>
+                <td style="padding:8px 0;font-size:13px;color:#1e293b;">${name}</td></tr>
+            <tr><td style="padding:8px 0;font-size:13px;color:#64748b;font-weight:600;">Email</td>
+                <td style="padding:8px 0;font-size:13px;color:#1e293b;"><a href="mailto:${email}">${email}</a></td></tr>
+          </table>
+          <div style="margin-top:16px;padding:16px;background:white;border-radius:8px;border:1px solid #e2e8f0;">
+            <p style="font-size:13px;color:#64748b;font-weight:600;margin-bottom:8px;">Message</p>
+            <p style="font-size:14px;color:#1e293b;line-height:1.7;margin:0;">${message.replace(/\n/g, '<br/>')}</p>
+          </div>
+          <p style="font-size:11px;color:#94a3b8;margin-top:16px;text-align:center;">
+            Received at ${new Date().toLocaleString()} | FEEDNORA Website
+          </p>
+        </div>
+      </div>
+    `,
+  }
 }
 
 // ── POST /api/contact ─────────────────────────────────────────
@@ -50,49 +84,22 @@ router.post(
 
     const { name, email, message } = req.body
 
-    // Save to local JSON
-    saveMessage({ name, email, message })
-
-    // Send email (skip if env vars not set — useful in dev)
-    if (process.env.EMAIL_USER && process.env.EMAIL_PASS) {
-      try {
-        const transporter = createTransporter()
-        await transporter.sendMail({
-          from: `"FEEDNORA Contact" <${process.env.EMAIL_USER}>`,
-          to: process.env.EMAIL_TO || process.env.EMAIL_USER,
-          replyTo: email,
-          subject: `New message from ${name} — FEEDNORA Website`,
-          html: `
-            <div style="font-family:Poppins,sans-serif;max-width:600px;margin:0 auto;">
-              <div style="background:#14532d;padding:24px;border-radius:12px 12px 0 0;text-align:center;">
-                <h1 style="color:white;margin:0;font-size:22px;">FEED<span style="color:#4ade80;">NORA</span></h1>
-                <p style="color:rgba(255,255,255,0.7);margin:4px 0 0;font-size:13px;">New Contact Message</p>
-              </div>
-              <div style="background:#f8f9fa;padding:28px;border-radius:0 0 12px 12px;border:1px solid #e2e8f0;">
-                <table style="width:100%;border-collapse:collapse;">
-                  <tr><td style="padding:8px 0;font-size:13px;color:#64748b;font-weight:600;width:80px;">Name</td>
-                      <td style="padding:8px 0;font-size:13px;color:#1e293b;">${name}</td></tr>
-                  <tr><td style="padding:8px 0;font-size:13px;color:#64748b;font-weight:600;">Email</td>
-                      <td style="padding:8px 0;font-size:13px;color:#1e293b;"><a href="mailto:${email}">${email}</a></td></tr>
-                </table>
-                <div style="margin-top:16px;padding:16px;background:white;border-radius:8px;border:1px solid #e2e8f0;">
-                  <p style="font-size:13px;color:#64748b;font-weight:600;margin-bottom:8px;">Message</p>
-                  <p style="font-size:14px;color:#1e293b;line-height:1.7;margin:0;">${message.replace(/\n/g, '<br/>')}</p>
-                </div>
-                <p style="font-size:11px;color:#94a3b8;margin-top:16px;text-align:center;">
-                  Received at ${new Date().toLocaleString()} | FEEDNORA Website
-                </p>
-              </div>
-            </div>
-          `,
-        })
-      } catch (emailErr) {
-        console.error('Email send error:', emailErr.message)
-        // Don't fail the request — message is already saved
-      }
+    if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+      return res.status(500).json({ error: 'Email is not configured. Please set EMAIL_USER and EMAIL_PASS in backend/.env.' })
     }
 
-    res.status(200).json({ success: true, message: 'Message received. Thank you!' })
+    const transporter = createTransporter()
+    const mailOptions = getMailOptions({ name, email, message })
+
+    try {
+      await transporter.sendMail(mailOptions)
+      saveMessage({ name, email, message })
+      return res.status(200).json({ success: true, message: 'Message received and sent successfully.' })
+    } catch (emailErr) {
+      console.error('Email send error:', emailErr)
+      saveMessage({ name, email, message, emailError: emailErr.message })
+      return res.status(500).json({ error: 'Unable to send email. Check backend email configuration.', detail: emailErr.message })
+    }
   }
 )
 
