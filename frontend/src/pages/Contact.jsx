@@ -21,12 +21,22 @@ export default function Contact() {
     setStatus('loading')
     setErrMsg('')
     try {
-      await axios.post('/api/contact', form)
-      setStatus('success')
-      setForm({ name: '', email: '', message: '' })
+      const res = await fetch(FORMSPREE_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(form),
+      })
+      if (res.ok) {
+        setStatus('success')
+        setForm({ name: '', email: '', message: '' })
+      } else {
+        const data = await res.json()
+        setErrMsg(data?.errors?.[0]?.message || 'Something went wrong. Please try again.')
+        setStatus('error')
+      }
     } catch {
       setStatus('error')
-      setErrMsg('Something went wrong. Please try again.')
+      setErrMsg('Network error. Please check your connection and try again.')
     }
   }
 
