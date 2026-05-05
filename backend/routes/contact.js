@@ -25,7 +25,9 @@ function saveMessage(msg) {
 // ── Nodemailer transporter ────────────────────────────────────
 function createTransporter() {
   return nodemailer.createTransport({
-    service: 'gmail',
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true,
     auth: {
       user: process.env.EMAIL_USER,
       pass: process.env.EMAIL_PASS,
@@ -53,15 +55,13 @@ router.post(
     // Save to local JSON
     saveMessage({ name, email, message })
 
-    const mailRecipient = process.env.EMAIL_TO || 'shashini.janandi@gmail.com'
-
     // Send email (skip if env vars not set — useful in dev)
     if (process.env.EMAIL_USER && process.env.EMAIL_PASS) {
       try {
         const transporter = createTransporter()
         await transporter.sendMail({
           from: `"FEEDNORA Contact" <${process.env.EMAIL_USER}>`,
-          to: mailRecipient,
+          to: process.env.EMAIL_TO || process.env.EMAIL_USER,
           replyTo: email,
           subject: `New message from ${name} — FEEDNORA Website`,
           html: `
