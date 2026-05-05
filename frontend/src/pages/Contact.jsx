@@ -22,9 +22,14 @@ export default function Contact() {
       await axios.post('/api/contact', form)
       setStatus('success')
       setForm({ name: '', email: '', message: '' })
-    } catch {
+    } catch (error) {
+      const serverMessage = error.response?.data?.message ||
+        (error.response?.data?.errors && error.response.data.errors.map(err => err.msg).join(', ')) ||
+        error.message ||
+        'Something went wrong.'
+
       setStatus('error')
-      setErrMsg('Something went wrong. Please try again.')
+      setErrMsg(`Submission failed: ${serverMessage}`)
     }
   }
 

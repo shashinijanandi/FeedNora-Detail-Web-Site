@@ -53,13 +53,15 @@ router.post(
     // Save to local JSON
     saveMessage({ name, email, message })
 
+    const mailRecipient = process.env.EMAIL_TO || 'shashini.janandi@gmail.com'
+
     // Send email (skip if env vars not set — useful in dev)
     if (process.env.EMAIL_USER && process.env.EMAIL_PASS) {
       try {
         const transporter = createTransporter()
         await transporter.sendMail({
           from: `"FEEDNORA Contact" <${process.env.EMAIL_USER}>`,
-          to: process.env.EMAIL_TO || process.env.EMAIL_USER,
+          to: mailRecipient,
           replyTo: email,
           subject: `New message from ${name} — FEEDNORA Website`,
           html: `
